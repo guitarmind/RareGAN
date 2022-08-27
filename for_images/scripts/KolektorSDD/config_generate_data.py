@@ -9,7 +9,7 @@ config = {
     },
 
     'global_config': {
-        'batch_size': 64,
+        'batch_size': 256,
         'z_dim': 100,
 
         'mg': 256,
@@ -35,11 +35,11 @@ config = {
             'method': ['raregan'],
             'dataset': ['KolektorSDD'],
             'bgt': [1000],
-            'data_high_frc': [0.01],
+            'data_high_frc': [0.1],
             'run': [0],
 
-            'ini_rnd_bgt': [500],
-            'bgt_per_step': [500],
+            'ini_rnd_bgt': [250],
+            'bgt_per_step': [250],
 
             'high_frc_mul': [3.0],
 

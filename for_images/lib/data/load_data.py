@@ -17,9 +17,9 @@ def _construct_dataset(data_x, data_y, data_high_fraction):
     data_y = 1 - data_y
     if data_high_fraction is not None:
         num_low = np.where(data_y == 0)[0].shape[0]
-        num_high = np.where(data_y == 1)[0].shape[0]
-        # num_high = int(
-        #     num_low / (1. - data_high_fraction) * data_high_fraction)
+        # num_high = np.where(data_y == 1)[0].shape[0]
+        num_high = int(
+            num_low / (1. - data_high_fraction) * data_high_fraction)
 
         filter_ = data_y == 0
         ids = np.random.permutation(np.where(data_y == 1)[0])

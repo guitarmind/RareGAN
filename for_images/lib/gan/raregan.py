@@ -441,6 +441,10 @@ class RareGAN(object):
         softmax = scipy.special.softmax(class_logits, axis=1)
         max_ = np.max(softmax, axis=1)
         id_ = np.argsort(max_)
+
+        if num_samples > numpy_inputs.shape[0]:
+            num_samples = numpy_inputs.shape[0]
+
         print("Picking {} samples from {} samples".format(
             num_samples, numpy_inputs.shape[0]))
         print("The softmax of ranked {}th-sample is: {}".format(
