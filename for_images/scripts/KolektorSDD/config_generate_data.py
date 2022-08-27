@@ -9,7 +9,7 @@ config = {
     },
 
     'global_config': {
-        'batch_size': 256,
+        'batch_size': 16,
         'z_dim': 100,
 
         'mg': 64,
