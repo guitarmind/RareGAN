@@ -19,7 +19,7 @@ config = {
         'disc_lr': 0.0002,
         'disc_beta1': 0.5,
 
-        'extra_iteration_checkpoint_freq': 1000,
+        'extra_iteration_checkpoint_freq': 10000,
         'iteration_log_freq': 1000,
         'visualization_freq': 200,
         'metric_freq': 200,
