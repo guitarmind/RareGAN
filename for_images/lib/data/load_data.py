@@ -19,6 +19,9 @@ def _construct_dataset(data_x, data_y, data_high_fraction):
         num_low = np.where(data_y == 0)[0].shape[0]
         num_high = int(
             num_low / (1. - data_high_fraction) * data_high_fraction)
+        if num_high == 0:
+            num_high = 1
+
         filter_ = data_y == 0
         ids = np.random.permutation(np.where(data_y == 1)[0])
         high_selected = ids[:num_high]
@@ -99,7 +102,8 @@ def load_data(dataset, data_high_fraction=None):
                     if np.sum(label_img) > 0:
                         defective_count += 1
 
-                        # print(f"{folder}-{part_id} has defect:", np.sum(label_img) > 0)
+                        # print(f"{folder}-{part_id} has defect:",
+                        # np.sum(label_img) > 0)
 
                         dataset_labels[f"{folder}-{part_id}"] = label_img
 
@@ -145,7 +149,7 @@ def load_data(dataset, data_high_fraction=None):
                 assert input_image.shape == (32, 32)
 
                 data_x.append(input_image[np.newaxis, :, :, np.newaxis] / 255)
-                data_y.append(0)
+                data_y.append(2)
 
         data_x = np.concatenate(data_x, axis=0)
         data_y = np.array(data_y, dtype=np.int32)
