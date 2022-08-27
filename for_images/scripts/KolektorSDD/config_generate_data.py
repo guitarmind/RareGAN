@@ -34,9 +34,9 @@ config = {
         {
             'method': ['raregan'],
             'dataset': ['KolektorSDD'],
-            'bgt': [100],
+            'bgt': [150],
             'data_high_frc': [0.1],
-            'run': [0, 1, 2, 3, 4],
+            'run': [0],
 
             'ini_rnd_bgt': [50],
             'bgt_per_step': [50],
