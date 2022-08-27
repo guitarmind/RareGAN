@@ -12,7 +12,7 @@ config = {
         'batch_size': 256,
         'z_dim': 100,
 
-        'mg': 256,
+        'mg': 64,
 
         'gen_lr': 0.0002,
         'gen_beta1': 0.5,
@@ -36,7 +36,7 @@ config = {
             'dataset': ['KolektorSDD'],
             'bgt': [100],
             'data_high_frc': [0.1],
-            'run': [0, 1],
+            'run': [0, 1, 2, 3, 4],
 
             'ini_rnd_bgt': [50],
             'bgt_per_step': [50],
@@ -44,7 +44,7 @@ config = {
             'high_frc_mul': [3.0],
 
             'bal_disc_weights': [True],
-            'num_iters_per_step': [10000],
+            'num_iters_per_step': [15000],
             'disc_disc_coe': [1.0],
             'gen_disc_coe': [1.0],
         },

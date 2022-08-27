@@ -77,6 +77,7 @@ def load_data(dataset, data_high_fraction=None):
 
     elif dataset == 'KolektorSDD':
         dataset_folder = "/workspace/Kaggle/KolektorSDD"
+        target_size = 128
 
         # https://stackoverflow.com/questions/4808221/is-there-a-bounding-box-function-slice-with-non-zero-values-for-a-ndarray-in
         def crop_bbox(img):
@@ -131,9 +132,9 @@ def load_data(dataset, data_high_fraction=None):
                 input_image = input_image[y_center - 250:y_center + 250, :]
 
                 input_image = cv2.resize(
-                    input_image, (32, 32)).astype(np.float32)
+                    input_image, (target_size, target_size)).astype(np.float32)
 
-                assert input_image.shape == (32, 32)
+                assert input_image.shape == (target_size, target_size)
 
                 data_x.append(input_image[np.newaxis, :, :, np.newaxis] / 255)
                 # 0 as rare class in the paper
@@ -144,9 +145,9 @@ def load_data(dataset, data_high_fraction=None):
                 input_image = input_image[y_center - 250:y_center + 250, :]
 
                 input_image = cv2.resize(
-                    input_image, (32, 32)).astype(np.float32)
+                    input_image, (target_size, target_size)).astype(np.float32)
 
-                assert input_image.shape == (32, 32)
+                assert input_image.shape == (target_size, target_size)
 
                 data_x.append(input_image[np.newaxis, :, :, np.newaxis] / 255)
                 data_y.append(1)
