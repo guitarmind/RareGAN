@@ -99,7 +99,7 @@ def load_data(dataset, data_high_fraction=None):
                     if np.sum(label_img) > 0:
                         defective_count += 1
 
-                        print(f"{folder}-{part_id} has defect:", np.sum(label_img) > 0)
+                        # print(f"{folder}-{part_id} has defect:", np.sum(label_img) > 0)
 
                         dataset_labels[f"{folder}-{part_id}"] = label_img
 

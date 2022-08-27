@@ -1,6 +1,6 @@
 config = {
     'scheduler_config': {
-        'gpu': ['1'],
+        'gpu': ['0'],
         'temp_folder': 'temp',
         'scheduler_log_file_path': 'scheduler.log',
         'log_file': 'worker.log',
@@ -27,7 +27,7 @@ config = {
         'class_loss_with_fake': False,
         'bal_class_weights': False,
 
-        'num_generated_samples': 500000,
+        'num_generated_samples': 399,
     },
 
     'test_config': [
