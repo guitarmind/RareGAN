@@ -128,9 +128,9 @@ def load_data(dataset, data_high_fraction=None):
                 input_image = input_image[y_center - 250:y_center + 250, :]
 
                 input_image = cv2.resize(
-                    input_image, (128, 128)).astype(np.float32)
+                    input_image, (32, 32)).astype(np.float32)
 
-                assert input_image.shape == (128, 128)
+                assert input_image.shape == (32, 32)
 
                 data_x.append(input_image[np.newaxis, :, :, np.newaxis] / 255)
                 data_y.append(1)
@@ -140,9 +140,9 @@ def load_data(dataset, data_high_fraction=None):
                 input_image = input_image[y_center - 250:y_center + 250, :]
 
                 input_image = cv2.resize(
-                    input_image, (128, 128)).astype(np.float32)
+                    input_image, (32, 32)).astype(np.float32)
 
-                assert input_image.shape == (128, 128)
+                assert input_image.shape == (32, 32)
 
                 data_x.append(input_image[np.newaxis, :, :, np.newaxis] / 255)
                 data_y.append(0)
