@@ -19,15 +19,15 @@ config = {
         'disc_lr': 0.0002,
         'disc_beta1': 0.5,
 
-        'extra_iteration_checkpoint_freq': 5000,
-        'iteration_log_freq': 5000,
+        'extra_iteration_checkpoint_freq': 1000,
+        'iteration_log_freq': 1000,
         'visualization_freq': 200,
-        'metric_freq': 400,
+        'metric_freq': 200,
 
         'class_loss_with_fake': False,
         'bal_class_weights': False,
 
-        'num_generated_samples': 500000,
+        'num_generated_samples': 399,
     },
 
     'test_config': [
@@ -36,15 +36,15 @@ config = {
             'dataset': ['KolektorSDD'],
             'bgt': [1000],
             'data_high_frc': [0.1],
-            'run': [0],
+            'run': [0, 1],
 
-            'ini_rnd_bgt': [250],
-            'bgt_per_step': [250],
+            'ini_rnd_bgt': [500],
+            'bgt_per_step': [500],
 
             'high_frc_mul': [3.0],
 
             'bal_disc_weights': [True],
-            'num_iters_per_step': [15000],
+            'num_iters_per_step': [100000],
             'disc_disc_coe': [1.0],
             'gen_disc_coe': [1.0],
         },

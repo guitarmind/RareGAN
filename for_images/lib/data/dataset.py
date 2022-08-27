@@ -55,14 +55,14 @@ class Dataset(object):
         self._conditions[data_ids] = condition
 
     def label_random_data(self, num_samples, step):
-        data_ids = np.random.choice(
-            self._numpy_inputs.shape[0],
-            size=num_samples,
-            replace=True)
         # data_ids = np.random.choice(
         #     self._numpy_inputs.shape[0],
         #     size=num_samples,
-        #     replace=False)
+        #     replace=True)
+        data_ids = np.random.choice(
+            self._numpy_inputs.shape[0],
+            size=num_samples,
+            replace=False)
         self.label_data(data_ids, step, -1)
 
     def _compute_class_weights(self, classes, y, last_fraction):

@@ -136,6 +136,7 @@ def load_data(dataset, data_high_fraction=None):
                 assert input_image.shape == (32, 32)
 
                 data_x.append(input_image[np.newaxis, :, :, np.newaxis] / 255)
+                # 0 as rare class in the paper
                 data_y.append(0)
             else:
                 y_center = round(input_image.shape[0] / 2)
