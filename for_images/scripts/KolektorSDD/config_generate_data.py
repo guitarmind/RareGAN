@@ -38,8 +38,8 @@ config = {
             'data_high_frc': [0.1, 0.08, 0.05],
             'run': [0, 1, 2, 3, 4],
 
-            'ini_rnd_bgt': [20],
-            'bgt_per_step': [20],
+            'ini_rnd_bgt': [50],
+            'bgt_per_step': [50],
 
             'high_frc_mul': [3.0],
 

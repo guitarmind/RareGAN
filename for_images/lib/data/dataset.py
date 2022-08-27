@@ -58,7 +58,11 @@ class Dataset(object):
         data_ids = np.random.choice(
             self._numpy_inputs.shape[0],
             size=num_samples,
-            replace=False)
+            replace=True)
+        # data_ids = np.random.choice(
+        #     self._numpy_inputs.shape[0],
+        #     size=num_samples,
+        #     replace=False)
         self.label_data(data_ids, step, -1)
 
     def _compute_class_weights(self, classes, y, last_fraction):
