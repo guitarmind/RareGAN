@@ -1,6 +1,6 @@
 config = {
     'scheduler_config': {
-        'gpu': ['0'],
+        'gpu': ['1'],
         'temp_folder': 'temp',
         'scheduler_log_file_path': 'scheduler.log',
         'log_file': 'worker.log',
@@ -33,47 +33,13 @@ config = {
     'test_config': [
         {
             'method': ['raregan'],
-            'dataset': ['CIFAR10'],
+            'dataset': ['KolektorSDD'],
             'bgt': [10000],
             'data_high_frc': [0.1, 0.08, 0.05],
             'run': [0, 1, 2, 3, 4],
 
             'ini_rnd_bgt': [5000],
             'bgt_per_step': [5000],
-
-            'high_frc_mul': [3.0],
-
-            'bal_disc_weights': [True],
-            'num_iters_per_step': [100000],
-            'disc_disc_coe': [1.0],
-            'gen_disc_coe': [1.0],
-        },
-        {
-            'method': ['raregan'],
-            'dataset': ['CIFAR10'],
-            'bgt': [5000],
-            'data_high_frc': [0.1],
-            'run': [0, 1, 2, 3, 4],
-
-            'ini_rnd_bgt': [2500],
-            'bgt_per_step': [2500],
-
-            'high_frc_mul': [3.0],
-
-            'bal_disc_weights': [True],
-            'num_iters_per_step': [100000],
-            'disc_disc_coe': [1.0],
-            'gen_disc_coe': [1.0],
-        },
-        {
-            'method': ['raregan'],
-            'dataset': ['CIFAR10'],
-            'bgt': [8000],
-            'data_high_frc': [0.1],
-            'run': [0, 1, 2, 3, 4],
-
-            'ini_rnd_bgt': [4000],
-            'bgt_per_step': [4000],
 
             'high_frc_mul': [3.0],
 
