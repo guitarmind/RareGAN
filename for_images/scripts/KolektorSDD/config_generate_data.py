@@ -48,6 +48,5 @@ config = {
             'disc_disc_coe': [1.0],
             'gen_disc_coe': [1.0],
         },
-        {
     ]
 }
