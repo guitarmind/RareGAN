@@ -4,6 +4,9 @@ import tarfile
 import _pickle as cPickle
 from .dataset import Dataset
 
+from PIL import Image
+import cv2
+
 
 def _unpickle_cifar10(file):
     return cPickle.load(file, encoding='latin1')
@@ -67,5 +70,56 @@ def load_data(dataset, data_high_fraction=None):
         data_x = np.reshape(data_x, [50000, 3, 32, 32])
         data_x = np.transpose(data_x, [0, 2, 3, 1])
         data_x = data_x.astype(np.float64)
-        data_x = data_x / 255. # -1~1
+        data_x = data_x / 255.  # -1~1
+        return _construct_dataset(data_x, data_y, data_high_fraction)
+
+    elif dataset == 'KolektorSDD':
+        dataset_folder = "/workspace/Kaggle/KolektorSDD"
+
+        # https://stackoverflow.com/questions/4808221/is-there-a-bounding-box-function-slice-with-non-zero-values-for-a-ndarray-in
+        def crop_bbox(img):
+            rows = np.any(img, axis=1)
+            cols = np.any(img, axis=0)
+            ymin, ymax = np.where(rows)[0][[0, -1]]
+            xmin, xmax = np.where(cols)[0][[0, -1]]
+            return img[ymin:ymax + 1, xmin:xmax + 1], (ymin, ymax, xmin, xmax)
+
+        data_x = []
+        data_y = []
+        for key, input_image in dataset_inputs.items():
+
+            if key in dataset_labels:
+                label_image = dataset_labels[key]
+
+                # Crop center 500px
+                bbox_image, (ymin, ymax, xmin, xmax) = crop_bbox(label_image)
+
+                y_center = round((ymax + ymin) / 2)
+                x_center = round((xmax + xmin) / 2)
+
+                input_image = input_image[y_center - 250:y_center + 250, :]
+
+                input_image = cv2.resize(
+                    input_image, (128, 128)).astype(np.float32)
+
+                assert input_image.shape == (128, 128)
+
+                data_x.append(input_image[np.newaxis, :, :, np.newaxis] / 255)
+                data_y.append(1)
+            else:
+                y_center = round(input_image.shape[0] / 2)
+
+                input_image = input_image[y_center - 250:y_center + 250, :]
+
+                input_image = cv2.resize(
+                    input_image, (128, 128)).astype(np.float32)
+
+                assert input_image.shape == (128, 128)
+
+                data_x.append(input_image[np.newaxis, :, :, np.newaxis] / 255)
+                data_y.append(0)
+
+        data_x = np.concatenate(data_x, axis=0)
+        data_y = np.array(data_y, dtype=np.int32)
+
         return _construct_dataset(data_x, data_y, data_high_fraction)
