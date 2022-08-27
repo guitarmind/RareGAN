@@ -84,6 +84,34 @@ def load_data(dataset, data_high_fraction=None):
             xmin, xmax = np.where(cols)[0][[0, -1]]
             return img[ymin:ymax + 1, xmin:xmax + 1], (ymin, ymax, xmin, xmax)
 
+        dataset_inputs = {}
+        dataset_labels = {}
+        defective_count = 0
+        for folder in os.listdir(dataset_folder):
+            for filename in os.listdir(f"{dataset_folder}/{folder}"):
+
+                if ".bmp" in filename:
+                    part_id = filename.split("_")[0]
+
+                    label_img = Image.open(f"{dataset_folder}/{folder}/{filename}")
+                    label_img = np.array(label_img)
+
+                    if np.sum(label_img) > 0:
+                        defective_count += 1
+
+                        print(f"{folder}-{part_id} has defect:", np.sum(label_img) > 0)
+
+                        dataset_labels[f"{folder}-{part_id}"] = label_img
+
+                else:
+                    part_id = filename.split(".")[0]
+
+                    input_img = Image.open(
+                        f"{dataset_folder}/{folder}/{filename}").convert('L')
+                    input_img = np.array(input_img)
+
+                    dataset_inputs[f"{folder}-{part_id}"] = input_img
+
         data_x = []
         data_y = []
         for key, input_image in dataset_inputs.items():
