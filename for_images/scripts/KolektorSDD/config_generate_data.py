@@ -38,13 +38,13 @@ config = {
             'data_high_frc': [0.1, 0.08, 0.05],
             'run': [0, 1, 2, 3, 4],
 
-            'ini_rnd_bgt': [5000],
-            'bgt_per_step': [5000],
+            'ini_rnd_bgt': [20],
+            'bgt_per_step': [20],
 
             'high_frc_mul': [3.0],
 
             'bal_disc_weights': [True],
-            'num_iters_per_step': [100000],
+            'num_iters_per_step': [10000],
             'disc_disc_coe': [1.0],
             'gen_disc_coe': [1.0],
         },
